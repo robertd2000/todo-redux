@@ -5,29 +5,7 @@ import {
   useSelector,
 } from "react-redux";
 import todosSlice from "../../entities/todos/model/slice";
-import { localStorageController } from "../../shared/lib/local-storage.controller";
-
-const REDUX_STATE_KEY = "reduxTodosState";
-
-const loadState = (): Partial<RootState> | undefined => {
-  try {
-    return (
-      localStorageController.getItem<Partial<RootState>>(REDUX_STATE_KEY) ??
-      undefined
-    );
-  } catch (err) {
-    console.error("Failed to load state from localStorage", err);
-    return undefined;
-  }
-};
-
-const saveState = (state: RootState) => {
-  try {
-    localStorageController.setItem(REDUX_STATE_KEY, state);
-  } catch (err) {
-    console.error("Failed to save state to localStorage", err);
-  }
-};
+import { loadState, saveState } from "./ls";
 
 const rootReducer = combineReducers({
   todos: todosSlice,
