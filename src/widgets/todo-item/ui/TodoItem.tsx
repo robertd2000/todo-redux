@@ -8,7 +8,7 @@ export function TodoItem({ todo }: TodoItemProps) {
   return (
     <div className={style.todo} id={todo.id}>
       <div className={style.start}>
-        <CompleteTodo todo={todo} />
+        <CompleteTodo todo={todo.id} />
       </div>
       <div className={style.middle}>
         <EditTodo todo={todo} />

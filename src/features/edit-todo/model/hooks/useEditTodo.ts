@@ -29,6 +29,7 @@ export const useEditTodo = (todo: TodoItemType) => {
         newText: title,
       })
     );
+    setIsEditMode(false);
   };
 
   const onEdit = (e: React.KeyboardEvent<HTMLInputElement>) => {
