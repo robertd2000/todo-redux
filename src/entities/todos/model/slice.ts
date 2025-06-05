@@ -46,6 +46,7 @@ const todosSlice = createSlice({
       const { from, to } = action.payload;
 
       const todo = state.todos[from];
+
       state.todos.splice(from, 1);
       state.todos.splice(to, 0, todo);
 
