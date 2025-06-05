@@ -7,7 +7,7 @@ import {
 import todosSlice from "../../entities/todos/model/slice";
 import { localStorageController } from "../../shared/lib/local-storage.controller";
 
-const REDUX_STATE_KEY = "reduxState";
+const REDUX_STATE_KEY = "reduxTodosState";
 
 const loadState = (): Partial<RootState> | undefined => {
   try {
@@ -40,9 +40,7 @@ export const setupStore = (preloadedState?: Partial<RootState>) => {
   });
 
   store.subscribe(() => {
-    store.subscribe(() => {
-      saveState(store.getState());
-    });
+    saveState(store.getState());
   });
 
   return store;

@@ -7,7 +7,6 @@ export function CompleteTodo({ todo }: CompleteTodoProps) {
 
   return (
     <input
-      id={"complete"}
       type="checkbox"
       checked={isCompleted}
       onChange={toggleComplete}

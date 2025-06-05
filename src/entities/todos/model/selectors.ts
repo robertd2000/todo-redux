@@ -1,10 +1,18 @@
+import { createSelector } from "@reduxjs/toolkit";
 import type { RootState } from "../../../app/store";
-import type { TodoItemType } from "../types";
 
-export const selectAllTodos = (state: RootState) => state.todos.todos;
+const selectTodosState = (state: RootState) => state.todos;
+const selectTodosItems = (state: RootState) => state.todos.todos;
 
-export const selectCompletedTodos = (state: RootState) =>
-  state.todos.todos.filter((todo: TodoItemType) => todo.completed);
+export const selectActiveTodos = createSelector([selectTodosItems], (todos) =>
+  todos.filter((todo) => !todo.completed)
+);
 
-export const selectActiveTodos = (state: RootState) =>
-  state.todos.todos.filter((todo: TodoItemType) => !todo.completed);
+export const selectCompletedTodos = createSelector(
+  [selectTodosItems],
+  (todos) => todos.filter((todo) => todo.completed)
+);
+
+export { selectTodosItems as selectAllTodos };
+
+export { selectTodosState };
