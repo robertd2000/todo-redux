@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { ClearCompleted } from "../../../features/clear-completed";
 import { useItems } from "../model";
 import { HeaderLink } from "./Link";
-import style from "../style/header.module.scss";
+import style from "../style/Header.module.scss";
 
 export function Header() {
   const { items } = useItems();
