@@ -6,14 +6,19 @@ import { Completed } from "../../../pages/completed";
 export const routes: RouteObject[] = [
   {
     path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/active",
-    element: <Active />,
-  },
-  {
-    path: "/completed",
-    element: <Completed />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/active",
+        element: <Active />,
+      },
+      {
+        path: "/completed",
+        element: <Completed />,
+      },
+    ],
   },
 ];

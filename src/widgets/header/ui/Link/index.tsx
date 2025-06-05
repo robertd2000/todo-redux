@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import style from "../../style/header.module.scss";
+import style from "../../style/Header.module.scss";
 
 interface Props {
   title: string;
