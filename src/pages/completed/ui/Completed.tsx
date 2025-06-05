@@ -1,3 +1,9 @@
+import { TodoList } from "../../../widgets/todo-list";
+
 export function Completed() {
-  return <div>Completed</div>;
+  return (
+    <div>
+      <TodoList filter="completed" />
+    </div>
+  );
 }

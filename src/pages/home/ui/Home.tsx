@@ -1,3 +1,9 @@
+import { TodoList } from "../../../widgets/todo-list";
+
 export function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <TodoList filter="all" />
+    </div>
+  );
 }
