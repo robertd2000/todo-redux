@@ -1,11 +1,10 @@
 import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 import type { Filter } from "../../../shared/types";
 import { Empty } from "../../../shared/ui";
 import { useTodoList } from "../model";
-import { HTML5Backend } from "react-dnd-html5-backend";
-
-import style from "../styles/TodoList.module.scss";
 import { DraggableTodo } from "../../../features/draggable-todo";
+import style from "../styles/TodoList.module.scss";
 
 interface Props {
   filter: Filter;

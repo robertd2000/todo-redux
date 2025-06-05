@@ -1,5 +1,6 @@
-import { useDrag, useDrop } from "react-dnd";
+import { useCallback } from "react";
 import { useDispatch } from "react-redux";
+import { useDrag, useDrop } from "react-dnd";
 import { moveTodo } from "../../../entities/todos/model/slice";
 
 export function useDraggableTodo(id: string, index: number) {
@@ -13,19 +14,23 @@ export function useDraggableTodo(id: string, index: number) {
     }),
   }));
 
-  const [, drop] = useDrop(() => ({
-    accept: "TODO",
-    hover: (item: { id: string; index: number }) => {
+  const handleDrop = useCallback(
+    (item: { id: string; index: number }) => {
       if (item.index !== index) {
         dispatch(
           moveTodo({
-            to: item.index,
-            from: index,
+            from: item.index,
+            to: index,
           })
         );
-        item.index = index;
       }
     },
+    [dispatch, index]
+  );
+
+  const [, drop] = useDrop(() => ({
+    accept: "TODO",
+    hover: handleDrop,
   }));
 
   return {
