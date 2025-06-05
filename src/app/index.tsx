@@ -1,11 +1,11 @@
-import { Home } from "../pages/home";
 import { Providers } from "./providers";
+import { AppRouter } from "./router";
 import "./styles/global.scss";
 
 function App() {
   return (
     <Providers>
-      <Home />
+      <AppRouter />
     </Providers>
   );
 }
