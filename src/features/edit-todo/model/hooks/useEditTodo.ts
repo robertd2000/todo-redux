@@ -1,36 +1,34 @@
 import { useState } from "react";
 import type { TodoItemType } from "../../../../entities/todos/types";
+import { useAppDispatch } from "../../../../app/store";
+import { editTodo } from "../../../../entities/todos/model/slice";
 
 export const useEditTodo = (todo: TodoItemType) => {
-  const { setTodos } = useTodoContext();
   const [isEditMode, setIsEditMode] = useState(false);
   const [title, setTitle] = useState<string>("");
 
+  const dispatch = useAppDispatch();
+
   const onEditModeOn = () => {
-    if (!todo.done) {
+    if (!todo.completed) {
       setIsEditMode(true);
       setTitle(todo.title);
     }
   };
 
   const onEditModeOf = () => {
-    if (!todo.done) {
+    if (!todo.completed) {
       saveTodos();
     }
   };
 
   const saveTodos = () => {
-    setTodos((prev) =>
-      prev.map((i) => {
-        if (i.id === todo.id)
-          return {
-            ...i,
-            title,
-          };
-        return i;
+    dispatch(
+      editTodo({
+        id: todo.id,
+        newText: title,
       })
     );
-    setIsEditMode(false);
   };
 
   const onEdit = (e: React.KeyboardEvent<HTMLInputElement>) => {
