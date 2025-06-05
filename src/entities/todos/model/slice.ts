@@ -42,9 +42,24 @@ const todosSlice = createSlice({
     clearCompleted: (state) => {
       state.todos = state.todos.filter((todo) => !todo.completed);
     },
+    moveTodo(state, action: PayloadAction<{ from: number; to: number }>) {
+      const { from, to } = action.payload;
+
+      const todo = state.todos[from];
+      state.todos.splice(from, 1);
+      state.todos.splice(to, 0, todo);
+
+      return state;
+    },
   },
 });
 
-export const { addTodo, toggleTodo, removeTodo, editTodo, clearCompleted } =
-  todosSlice.actions;
+export const {
+  addTodo,
+  toggleTodo,
+  removeTodo,
+  editTodo,
+  clearCompleted,
+  moveTodo,
+} = todosSlice.actions;
 export default todosSlice.reducer;
