@@ -9,11 +9,11 @@ export const routes: RouteObject[] = [
     element: <Home />,
   },
   {
-    path: "/active-todos",
+    path: "/active",
     element: <Active />,
   },
   {
-    path: "/completed-todos",
+    path: "/completed",
     element: <Completed />,
   },
 ];
