@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { ClearCompleted } from "../../../features/clear-completed";
 import { useItems } from "../model";
 import { HeaderLink } from "./Link";
 import style from "../style/header.module.scss";
@@ -14,7 +15,7 @@ export function Header() {
             <span>TODOS</span>
           </Link>
           <div className={style.controls}>
-            {/* <ClearCompleted /> */}
+            <ClearCompleted />
             <span>{items} items left</span>
           </div>
           <div className={style.menu}>
