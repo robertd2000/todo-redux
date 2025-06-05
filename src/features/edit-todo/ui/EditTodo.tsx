@@ -18,7 +18,7 @@ export function EditTodo({ todo }: EditTodoProps) {
       ) : (
         <span
           className={`font-semibold break-all ${
-            todo.done ? "line-through" : ""
+            todo.completed ? "line-through" : ""
           }`}
           data-testid="todo_content"
         >
